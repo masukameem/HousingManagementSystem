@@ -1,0 +1,65 @@
+﻿@*[Meem-24/02/2018]*@
+<div class="container">
+
+    @*<div class="row">
+    *@
+    <!-- Navbar -->
+    <div class="container-fluid">
+        <div class="navbar navbar-fixed-top header">
+            @*<div class="navbar transparent navbar-fixed-top">
+        <div class="navbar-inner">
+            *@
+            <!-- Logo Text -->
+            <div class="container col-sm-4">
+                <h1 style="font-size: 60px; font-family:'Bernard MT'"><b>Housing</b></h1>
+                <h6 style="font-size: 30px; font-family:'Bernard MT'"><b>Management</b></h6>
+            </div>
+            <div class="col-sm-8" style="padding-top:40px">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar" style="background:midnightblue"></span>
+                        <span class="icon-bar" style="background:midnightblue"></span>
+                        <span class="icon-bar" style="background:midnightblue"></span>
+                    </button>
+                </div>
+                <!-- Menus -->
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a asp-controller="Home" asp-action="Index" style="color:midnightblue; font-size: 18px"><b>Home</b></a></li>
+                        <li><a asp-controller="Home" asp-action="AdminProfile" style="color:midnightblue; font-size: 18px"><b>Profile</b></a></li>
+                        <li><a asp-controller="Home" asp-action="SellAdmin" style="color:midnightblue; font-size: 18px"><b>Buy & Sell</b></a></li>
+                        <li><a asp-controller="Home" asp-action="RentAdmin" style="color:midnightblue; font-size: 18px"><b>Rent</b></a></li>
+                        <li><a asp-controller="Home" asp-action="Users" style="color:midnightblue; font-size: 18px"><span class="glyphicon glyphicon-user" style="color:midnightblue; font-size: 18px"></span><b> Users</b></a></li>
+                        <li><a asp-controller="Home" asp-action="Admins" style="color:midnightblue; font-size: 18px"><span class="glyphicon glyphicon-user" style="color:midnightblue; font-size: 18px"></span><b> Admins</b></a></li>
+                        <li><a asp-controller="Home" asp-action="Reports" style="color:midnightblue; font-size: 18px"><span class="glyphicon glyphicon-bookmark" style="color:midnightblue; font-size: 18px"></span><b> Reports</b></a></li>
+                        <li><a href="#" style="color:midnightblue; font-size: 18px" data-toggle="modal" data-target="#logoutModal"><span class="glyphicon glyphicon-log-out" style="color:midnightblue; font-size: 18px"></span><b> Log Out</b></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*
+        </div>*@
+
+    <!-- Logout Modal -->
+    <div id="logoutModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">LOGOUT!!!</h4>
+                </div>
+                <div class="modal-body">
+                    <label>You have been logged out.</label>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="location.href='Index'" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        @*[~Meem-24/02/2018]*@

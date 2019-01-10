@@ -1,0 +1,123 @@
+﻿@model HousingManagement.Models.ReportList
+
+@{
+    ViewData["Title"] = "View Reports";
+}
+
+<!-- Header -->
+@Html.Partial("~/Views/Shared/_header_admin.cshtml")
+
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<div class="container" style="padding-top:170px">
+    <!-- Search -->
+    <div class="row">
+        <form asp-controller="Home" asp-action="Reports" method="post">
+
+            <div class="form-group">
+                <div class="col-sm-offset-8 col-sm-2">
+                    <input type="text" name="Id" placeholder="Search Id" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <input type="submit" value="Search" required="required" class="btn btn-default" />
+                    <br /><br /><br />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Report list -->
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Reporter Id
+                </th>
+                <th>
+                    Reporter Name
+                </th>
+                <th>
+                    Report Against
+                </th>
+                <th>
+                    Reason
+                </th>
+                <th>
+                    Comment
+                </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var data in Model.ReportsAll)
+            {
+                <tr>
+                    <td class="showDetails pointer">@data.Id</td>
+                    <td class="showDetails pointer">@data.AddedBy</td>
+                    <td class="showDetails pointer">@data.AddedName</td>
+                    <td class="showDetails pointer">@data.AgainstId</td>
+                    <td class="showDetails pointer">@data.ReportReason</td>
+                    <td class="showDetails pointer">@data.Comment</td>
+
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm openDiag" data-toggle="modal" data-target="#Delete" data-id="@data.Id"><span class="glyphicon glyphicon-trash" style="vertical-align:middle;margin-top: -5px"></span> Delete</button>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="Delete" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete</h4>
+
+                </div>
+
+                <div class="modal-body">
+                    <p><h3>Are you sure you want to delete this?</h3></p>
+
+                </div>
+                <div class="modal-footer">
+                    <form asp-controller="Home" asp-action="DeleteReport" method="post" class="form-inline" role="form">
+                        <input type="hidden" name="Id" id="Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button class="btn" data-dismiss="modal">No</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete -->
+<script type="text/javascript">
+    $(document).on("click", ".openDiag", function () {
+        var empid = $(this).data("id");
+        $(".modal-footer #Id").val(empid);
+    });
+    $(document).on("click", ".open-dialog", function () {
+        var empid = $(this).data("id");
+        $(".modal-footer #Id").val(empid);
+    });
+</script>
+
+<script src="~/js/jquery1.js"></script>

@@ -1,0 +1,123 @@
+﻿@model HousingManagement.Models.RentAds
+
+<div class="container" style="padding-top:170px;">
+
+    <!-- Ad Title -->
+    <h4 style="font-size:40px; color:midnightblue"><b>@Model.Headline</b></h4>
+    <br />
+    <div class="row">
+        <div class="col-md-9">
+            <div class="embed-responsive embed-responsive-16by9">
+
+                <img src="~/images/@Model.MainImage" alt="Lights" style="height:400px;width:800px;"><br /><br />
+                <div class="col-lg-1">
+                    <p><b>@Model.BedroomNo</b></p>
+                    <p>  Bed</p>
+
+                </div>
+                <div class="col-lg-1" style="text-align:right">
+                    <p><b>@Model.BathroomNo</b></p>
+                    <p>Bath</p>
+
+                </div>
+                <div class="col-lg-1" style="text-align:right">
+                    <p><b>@Model.OthersNo</b></p>
+                    <p>Others</p>
+
+                </div>
+                <div class="col-lg-9" style="text-align:right">
+                    <p><b>@Model.Rent Tk</b></p>
+                    <img src="~/DataDictionary/images/Home/caculator.png" style="width:45px; height:45px; text-align:center" />
+                </div><br />
+            </div>
+        </div>
+        <div class="col-lg-3 border border-primary table-bordered" style="height:270px">
+            <h1 style="text-align:center">Owner Info</h1>
+            <h2 border-primary table-bordered style="text-align:center">
+                <img src="~/DataDictionary/images/Home/User.png" style="width:45px; height:45px; text-align:center" /><br />
+                <span>@Model.OwnerName</span>
+            </h2>
+            <p style="text-align:center"><b>Contact No: </b>@Model.OwnerContact</p>
+            <p style="text-align:center"><b>Email: </b>@Model.OwnerEmail</p>
+            <br />
+            <p style="text-align:center"><b>Advertiser Id: </b>@Model.AddedBy</p>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <hr />
+        <p class="col-lg-9" style="text-align:left"> <b>Address: </b>@Model.Address</p><br />
+        <div class="col-lg-10">
+            <hr />
+            <h4> Details:</h4>
+            <p>@Model.Details</p>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <hr />
+        <h3>Neighborhoods</h3>
+        <br />
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Direction
+                    </th>
+                    <th>
+                        Neighborhood Name
+                    </th>
+                    <th>
+                        Distance
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        East
+                    </td>
+                    <td>
+                        @Model.NeighborhoodEast
+                    </td>
+                    <td>
+                        @Model.NeighborhoodEastDistance
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        West
+                    </td>
+                    <td>
+                        @Model.NeighborhoodWest
+                    </td>
+                    <td>
+                        @Model.NeighborhoodWestDistance
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        North
+                    </td>
+                    <td>
+                        @Model.NeighborhoodNorth
+                    </td>
+                    <td>
+                        @Model.NeighborhoodNorthDistance
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        South
+                    </td>
+                    <td>
+                        @Model.NeighborhoodSouth
+                    </td>
+                    <td>
+                        @Model.NeighborhoodSouthDistance
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

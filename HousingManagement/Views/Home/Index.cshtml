@@ -1,0 +1,250 @@
+﻿@model HousingManagement.Models.UsersList
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container" style="padding-top:170px;">
+    <!-- Header -->
+    @Html.Partial("~/Views/Shared/_header_all.cshtml")
+
+    <!-- Image -->
+    <div class="container" style=" background-image:url(/DataDictionary/images/Home/Main.jpg); width:100%; height:700px; background-repeat:no-repeat; background-size:cover">
+
+    </div>
+
+    <br /><br /><br />
+
+    <!-- Description -->
+    <div class="container">
+        <h2 style="font-size: 50px; color:midnightblue; text-align:center"><b>Easy Solution For Your Housing</b></h2>
+    </div>
+    <br /><br />
+    <div class="container-fluid">
+        <div class="col-lg-4" style="background-color:midnightblue; color:white">
+            <h2 style="text-align:center"><b>Buy</b></h2>
+            <br />
+            <p style="text-align:justify;text-justify:inter-word;"><b>Want to buy a house?</b></p>
+            <p style="text-align:justify;text-justify:inter-word;"><b>Find the perfect house for you to buy in any area of the country.</b></p>
+        </div>
+        <br />
+        <div class="col-lg-4" style="background-color:skyblue; color:midnightblue">
+            <h2 style="text-align:center"><b>Sell</b></h2>
+            <br />
+            <p style="text-align:justify;text-justify:inter-word;"><b>Want to sell your house?</b></p>
+            <p style="text-align:justify;text-justify:inter-word;"><b>Show your house to the customers and get pefect customer easily.</b></p>
+        </div>
+        <br />
+        <div class="col-lg-4" style="background-color:midnightblue; color:white">
+            <h2 style="text-align:center"><b>Rent</b></h2>
+            <br />
+            <p style="text-align:justify;text-justify:inter-word;"><b>Want to get a house for rent? Or want to give your house for rent?</b></p>
+            <p style="text-align:justify;text-justify:inter-word;"><b>Find the house to take rent or give your house for rent.</b></p>
+        </div>
+    </div>
+</div>
+
+<!-- Registration Modal -->
+<div id="registrationModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Don't have account? Sign up here</h4>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="/Home/InsertUsers" enctype="multipart/form-data">
+                    <label>First Name:</label><span class="required" style="color:red"><b>*</b></span>
+                    <br />
+                    <input type="text" name="FirstName" required="required" class="form-control">
+                    <label>Last Name:</label><span class="required" style="color:red"><b>*</b></span>
+                    <br />
+                    <input type="text" name="LastName" required="required" class="form-control">
+
+                    <label>Image</label><span class="required" style="color:red"><b>*</b></span>
+                    <input type="file" name="Image" id="imageBrowes" required class="form-control">
+                    <div id="imgPreview" class="w1" style="display:none">
+                        <br />
+
+                        <img class="img-responsive" id="targetImg" style="width:200px; height:150px; border:10px;" />
+                        <div class="caption">
+                            <br />
+                            <a href="#" class="btn btn-danger" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i></a>
+                        </div>
+                        <br />
+                    </div>
+
+                    <label>Contact No:</label><span class="required" style="color:red"><b>*</b></span>
+                    <br />
+                    <input type="number" name="Contact" required="required" class="form-control">
+                    <label>Email:</label><span class="required" style="color:red"><b>*</b></span>
+                    <br />
+                    <input type="email" name="Email" required="required" class="form-control">
+                    <label>Address:</label><span class="required" style="color:red"><b>*</b></span>
+                    <br />
+                    <textarea rows="3" name="Address" required="required" class="form-control"></textarea>
+
+                    <label>Password:</label><span class="required" style="color:red"><b>*</b></span>
+                    <br>
+                    <input type="password" name="Password" required="required" class="form-control">
+                    <br />
+                    <input type="submit" value="Sign Up" class="btn btn-success" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User Login Modal -->
+<div id="userModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">User Login Here</h4>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Home" asp-action="UserProfile" method="post">
+
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <br />
+
+                        <input type="email" name="Email" class="form-control">
+                        <label>Password:</label>
+                        <br>
+                        <input type="password" name="Password" class="form-control">
+                        <br /><br>
+                        <input type="submit" value="Login" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Admin Login Modal -->
+<div id="adminModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Admin Login Here</h4>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Home" asp-action="AdminProfile" method="post">
+
+                    <div class="form-group">
+                        <label>Id:</label>
+                        <br />
+                        <input type="text" name="Id" class="form-control">
+                        <label>Password:</label>
+                        <br>
+                        <input type="password" name="Password" class="form-control">
+                        <br /><br>
+                        <input type="submit" value="Login" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Image JS -->
+<script src="~/js/jquery1.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $("#imageBrowes").change(function () {
+
+            var File = this.files;
+
+            if (File && File[0]) {
+                ReadImage(File[0]);
+            }
+
+        })
+
+
+    })
+
+
+    var ReadImage = function (file) {
+
+        var reader = new FileReader;
+        var image = new Image;
+
+        reader.readAsDataURL(file);
+        reader.onload = function (_file) {
+
+            image.src = _file.target.result;
+            image.onload = function () {
+
+                var height = this.height;
+                var width = this.width;
+                var type = file.type;
+                var name = file.name;
+                var size = ~~(file.size / 1024) + "KB";
+
+                if (height < 400 && width < 400) {
+
+
+                    $("#imageBrowes").val('');
+                    $("#description").text("Please select more than 200 px Image ");
+
+
+                }
+
+                else {
+
+                    $("#targetImg").attr('src', _file.target.result);
+                    //$("#description").text("Size:" + size + ", " + height + "X " + width + ", " + type + "");
+                    $("#N1").text(type);
+                    $("#S1").text(size);
+                    $("#H1").text(height);
+                    $("#W1").text(width);
+                    $("#imgPreview").show();
+                    $("#description").text('');
+                }
+
+            }
+
+        }
+
+    }
+
+    var ClearPreview = function () {
+        $("#imageBrowes").val('');
+        $("#description").text('');
+        $("#imgPreview").hide();
+
+
+    }
+</script>
+

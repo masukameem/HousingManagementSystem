@@ -1,0 +1,35 @@
+﻿
+
+@{
+    ViewData["Title"] = "Test";
+}
+
+
+<div class="container" style="padding-top:170px;">
+
+
+    @using (Html.BeginForm("Test", "Home", FormMethod.Post))
+    {
+        <div>
+            Admin @Html.RadioButton("UserType", "Admin")
+            User @Html.RadioButton("UserType", "User")
+            <br /><br>
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    }
+
+    
+
+   
+
+</div>
+
+
+
+
+
+
+
+
+
+

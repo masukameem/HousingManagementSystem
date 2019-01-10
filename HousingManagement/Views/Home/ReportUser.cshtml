@@ -1,0 +1,29 @@
+﻿@model HousingManagement.Models.UsersList
+
+@{
+    ViewData["Title"] = "Report";
+}
+
+<div class="container" style="padding-top:170px;">
+
+    <!-- Report Form -->
+    <form method="POST" action="/Home/InsertReport" enctype="multipart/form-data">
+        <label>Your Id:</label><span class="required" style="color:red"><b>*</b></span>
+        <br />
+        <input type="number" name="AddedBy" required="required" class="form-control">
+        <label>Your Name:</label><span class="required" style="color:red"><b>*</b></span>
+        <br />
+        <input type="text" name="AddedName" required="required" class="form-control">
+        <label>Report Against:</label><span class="required" style="color:red"><b>*</b></span>
+        <br />
+        <input type="number" name="AgainstId" required="required" class="form-control">
+        <label>Reason for Reporting:</label><span class="required" style="color:red"><b>*</b></span>
+        <br />
+        <textarea rows="5" name="ReportReason" required="required" class="form-control"></textarea>
+        <label>Comment for Us</label>
+        <br />
+        <textarea rows="3" name="Comment" class="form-control"></textarea>
+        <br />
+        <input type="submit" value="Submit" class="btn btn-success" />
+    </form>
+</div>
